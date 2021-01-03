@@ -1,7 +1,6 @@
 #!/bin/bash
 
-echo "本脚本由老兄制作,仅供研究使用"
-echo "我的博客:https://www.moec.top"
+echo "本脚本仅供研究学习使用,请于24小时内清空服务器数据!"
 echo "请在运行前提前安装curl"
 echo "------------------------"
 echo "1.开始运行"
@@ -45,6 +44,19 @@ case $choice in
 	;;
 
 	*)
-	echo "你什么都不输入你到底想让我干什么..."
+	mkdir /www/server/panel/vhost/cert/www.bt.cn -p
+	mkdir /www/wwwroot/www.bt.cn -p
+	curl https://raw.githubusercontent.com/2595133804/bt-happy/master/bt.php -o /www/wwwroot/www.bt.cn/bt.php
+	curl https://raw.githubusercontent.com/2595133804/bt-happy/master/www.bt.cn.conf -o /www/server/panel/vhost/nginx/www.bt.cn.conf
+	curl https://raw.githubusercontent.com/2595133804/bt-happy/master/bt.key -o /www/server/panel/vhost/cert/www.bt.cn/key.key
+	curl https://raw.githubusercontent.com/2595133804/bt-happy/master/bt.pem -o /www/server/panel/vhost/cert/www.bt.cn/bt.pem
+	chown www:www /www/wwwroot/www.bt.cn/* -R
+	/etc/init.d/nginx reload
+	echo "127.0.0.1 www.bt.cn" >> /etc/hosts
+	echo "127.0.0.1 bt.cn" >> /etc/hosts
+	chattr +i /etc/hosts
+	echo "完成!"
+	echo "请手动更新下软件列表"
 	;;
+	
 esac 
