@@ -1,6 +1,6 @@
 # 宝塔面板开心脚本
 
-#### 实测7.4.7版本(最新版本依然有效)
+#### 实测7.4.7版本(最新版本)依然有效
 
 ### 国外源（Github）：
 > wget https://raw.githubusercontent.com/2595133804/bt-happy/master/bt.sh && bash bt.sh
